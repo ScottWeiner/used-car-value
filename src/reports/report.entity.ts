@@ -21,10 +21,10 @@ export class Report {
   @Column()
   year: number;
 
-  @Column()
+  @Column({ type: 'float' })
   lng: number;
 
-  @Column()
+  @Column({ type: 'float' })
   lat: number;
 
   @Column()

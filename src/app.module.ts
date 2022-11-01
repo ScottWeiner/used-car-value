@@ -18,8 +18,12 @@ import { Report } from './reports/report.entity';
       inject: [ConfigService],
       useFactory: (config: ConfigService) => {
         return {
-          type: 'sqlite',
-          database: config.get<string>('DB_NAME'),
+          type: 'postgres',
+          database: config.get<string>('POSTGRES_DB_NAME'),
+          host: 'localhost',
+          port: 5432,
+          username: config.get<string>('POSTGRES_USER'),
+          password: config.get<string>('POSTGRES_PASSWORD'),
           entities: [User, Report],
           synchronize: true,
         }
