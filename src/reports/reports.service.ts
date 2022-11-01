@@ -43,8 +43,10 @@ export class ReportsService {
             .andWhere('lat - :lat BETWEEN -5 and 5', { lat })
             .andWhere('year - :year BETWEEN -2 and 2', { year })
             .andWhere('approved IS TRUE')
-            .orderBy('ABS(mileage - :mileage)', 'DESC')
-            .setParameters({ mileage })
+            .andWhere('mileage - :mileage BETWEEN -2000 and 2000', { mileage })
+            //.orderBy('ABS(mileage - :mileage)', 'DESC')
+
+
             .limit(3)
             .getRawOne()
     }
