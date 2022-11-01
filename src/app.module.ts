@@ -7,6 +7,7 @@ import { UsersModule } from './users/users.module';
 import { ReportsModule } from './reports/reports.module';
 import { User } from './users/user.entity';
 import { Report } from './reports/report.entity';
+import { DataSourceOptions } from 'typeorm';
 
 @Module({
   imports: [
@@ -19,13 +20,13 @@ import { Report } from './reports/report.entity';
       useFactory: (config: ConfigService) => {
         return {
           type: 'postgres',
-          database: config.get<string>('POSTGRES_DB_NAME'),
-          host: 'localhost',
-          port: 5432,
-          username: config.get<string>('POSTGRES_USER'),
-          password: config.get<string>('POSTGRES_PASSWORD'),
+          database: config.get<string>('PGDATABASE'),
+          host: config.get<string>('PGHOST'),
+          port: config.get<number>('PGPORT'),
+          username: config.get<string>('PGUSER'),
+          password: config.get<string>('PGPASSWORD'),
           entities: [User, Report],
-          synchronize: true,
+          synchronize: process.env.NODE_ENV === 'development' ? true : false,
         }
       }
     }),
