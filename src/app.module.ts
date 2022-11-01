@@ -26,7 +26,9 @@ import { DataSourceOptions } from 'typeorm';
           username: config.get<string>('PGUSER'),
           password: config.get<string>('PGPASSWORD'),
           entities: [User, Report],
-          synchronize: process.env.NODE_ENV === 'development' ? true : false,
+          synchronize: true, //process.env.NODE_ENV === 'development' ? true : false,
+          migrations: [/****/],
+          migrationsTableName: 'migrations_history'
         }
       }
     }),
