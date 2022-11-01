@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { User } from '../users/user.entity';
 import { Repository } from 'typeorm';
 import { CreateReportDto } from './DTOs/create-report.dto';
-import { Report } from './report.entity';
+import { Report } from './entities/report.entity';
 import { GetEstimateDto } from './DTOs/get-estimate.dto';
 import { NotFoundException } from '@nestjs/common';
 import { timeStamp } from 'console';
