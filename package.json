@@ -32,6 +32,7 @@
     "class-validator": "^0.13.2",
     "cookie-session": "^2.0.0",
     "cross-env": "^7.0.3",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^8.8.0",
     "postgresql": "^0.0.1",
     "reflect-metadata": "^0.1.13",

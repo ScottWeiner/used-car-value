@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "car-value-db",
+            "database": "car-value-db",
+            "username": "pguser",
+            "password": "password"
+        }
+    ]
+}

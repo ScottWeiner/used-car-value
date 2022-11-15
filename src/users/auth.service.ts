@@ -3,6 +3,17 @@ import { UsersService } from "./users.service";
 import { randomBytes, scrypt as _scrypt } from "crypto";
 import { promisify } from "util";
 
+import jwt from 'jsonwebtoken'
+
+export const generateToken = (user) => {
+    return jwt.sign({
+        id: user._id,
+        email: user.email,
+    }, process.env.JWT_SECRET, {
+        expiresIn: '30d'
+    })
+}
+
 const scrypt = promisify(_scrypt)
 
 @Injectable()
@@ -47,6 +58,10 @@ export class AuthService {
         if (hashCompare.toString('hex') !== hash) {
             throw new BadRequestException('Incorrect Password Supplied')
         }
+
+
+
+
         return user
     }
 
