@@ -28,8 +28,9 @@ export class UsersController {
 
     @Get('/whoami')
     @UseGuards(AuthGuard)
-    async whoAmI(@CurrentUser() user: string) {
-        return user
+    async whoAmI(@CurrentUser() user: string, @Session() session: any) {
+
+        return session.userId
     }
 
     @Post('/signup')
@@ -43,7 +44,7 @@ export class UsersController {
     async signin(@Body() body: CreateUserDto, @Session() session: any) {
         const user = await this.authService.signin(body.email, body.password)
         session.userId = user.id
-        console.log('session.userId: ', session.userId)
+
         return user
     }
 

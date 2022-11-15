@@ -11,7 +11,10 @@ import { timeStamp } from 'console';
 
 @Injectable()
 export class ReportsService {
-    constructor(@InjectRepository(Report) private repo: Repository<Report>) { }
+    constructor(
+        @InjectRepository(Report) private repo: Repository<Report>,
+
+    ) { }
 
     async create(reportDto: CreateReportDto, user: User) {
         const report = await this.repo.create(reportDto)

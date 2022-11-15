@@ -8,6 +8,8 @@ import { ReportsModule } from './reports/reports.module';
 import { User } from './users/user.entity';
 import { Report } from './reports/entities/report.entity';
 import { DataSourceOptions } from 'typeorm';
+import { Model } from './reports/entities/model.entity';
+import { Make } from './reports/entities/make.entity';
 
 @Module({
   imports: [
@@ -25,7 +27,7 @@ import { DataSourceOptions } from 'typeorm';
           port: config.get<number>('PGPORT'),
           username: config.get<string>('PGUSER'),
           password: config.get<string>('PGPASSWORD'),
-          entities: [User, Report],
+          entities: [User, Report, Make, Model],
           synchronize: true, //process.env.NODE_ENV === 'development' ? true : false,
           migrations: [/****/],
           migrationsTableName: 'migrations_history'
